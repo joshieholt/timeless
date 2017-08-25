@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+	
+	</head>
+	<body>
+		<h1>Timeless</h1>
+		<form method="post" action="/update">
+			{{#hasNoItem}}
+				Week of<input type="text" name="weekOf" required>
+				Monday<input type="number" name="mondayHours" value="0.0" required>
+				Tuesday<input type="number" name="tuesdayHours" value="0.0" required>
+				Wednesday<input type="number" name="wednesdayHours" value="0.0" required>
+				Thursday<input type="number" name="thursdayHours" value="0.0" required>
+				Friday<input type="number" name="fridayHours" value="0.0" required>
+				Total: {{ totalHours }}
+			{{/hasNoItem}}
+			{{#hasItem}}
+				Week of<input type="text" name="weekOf" value={{weekOf}} required>
+				Monday<input type="number" name="mondayHours" value={{mondayHours}} required>
+				Tuesday<input type="number" name="tuesdayHours" value={{tuesdayHours}} required>
+				Wednesday<input type="number" name="wednesdayHours" value={{wednesdayHours}} required>
+				Thursday<input type="number" name="thursdayHours" value={{thursdayHours}} required>
+				Friday<input type="number" name="fridayHours" value={{fridayHours}} required>
+				Total: {{ totalHours }}
+			{{/hasItem}}
+			<button name="theButtons" value="update">Update</button>
+			<button name="theButtons" value="submit">Submit</button>
+			
+		</form>
+		<br>
+		{{#hasTimeSheets}}
+		<div>Timesheets</div>
+		<br>
+		{{#timeSheets}}
+		{{#isComplete}}
+		<div> {{ weekOf }}</div>
+		<div> {{ mondayHours }}</div>
+		<div> {{ tuesdayHours }}</div>
+		<div> {{ wednesdayHours }}</div>
+		<div> {{ thursdayHours }}</div>
+		<div> {{ fridayHours }}</div>
+		{{/isComplete}}
+		{{/timeSheets}}
+		{{/hasTimeSheets}}
+	</body>
+</html>
